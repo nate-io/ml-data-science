@@ -192,3 +192,9 @@ What have we tried/what else can we try? May include try a new model, change des
 
 
 
+## Workbench Setup
+
+* Using Miniconda rather than Anaconda
+
+
+
