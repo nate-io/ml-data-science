@@ -2,8 +2,6 @@
 
 [TOC]
 
-
-
 ## Project Lifecycle
 
 1. Data Collection
@@ -121,9 +119,76 @@ It is tempting to think feature engineering is only present for structured data 
 
 
 
+## Modelling
+
+Based on our problem and data, which model should we use?
 
 
 
+Choosing how to split your data is incredibly important. You split your data into the **3 sets**:
+
+1. Training data - trains your model (70 - 80%)
+2. Validation data - tune your model (10 - 15%)
+3. Test Data - test & compare your model (10 - 15%)
+
+Data split issues:
+
+1. Data leakage 
+   1. When some data from the training and test data sets overlap. This allows the model to 'peek' at the test data and tends to lead to overfitting.
+2. Data mismatch
+   1. When training data and testing data are different (e.g., datasets have different features) and tends to lead to underfitting.
+
+
+
+Modelling has 3 parts:
+
+1. Choosing & training a model
+
+   a. uses the training data set 
+
+   b.  As a general rule, if working with structured data decision trees and gradient boost models *tend* to work best. If working with unstructured data deep learning and transfer learning *tend* to work best.
+
+   c. Goal: Minimize time between experiments! Iterating through experiments is important to find best fit. One optimization is to use a portion of your (large) training dataset at first to see results then expand to using the full dataset in a stepwise manner to evaluate the outcome. Make sure to compare apples-to-apples when analyzing experiments.
+
+2. Tuning a model
+
+   a. uses the training and/or validation data
+
+   b. improving your model to fit your data by tuning the hyperparameters; remember a model's first results are not it's last. Example: imagine roasting a chicken in the oven at 300 for one hour. It comes out raw and requires more cook time with a poor result. The next time you cook it at 350. That is tuning the oven temperature hyperparameter across experiments to make the process more efficient.
+
+3. Model comparison
+
+   a. uses the test data
+
+   b. A good model should show similar results between the training set performance and the test set performance.
+
+   c. One best performance metric does not equal best model! There are many factors related to what is the best model including accuracy, time to train, time to output new values (predictions) which should all be driven by the needs of the business case. A 100% accurate model which takes a day to make a new prediction means nothing if 90% accuracy within one minute is the business use case.
+
+
+
+Overfitting/Underfitting Troubleshooting
+
+1. Underfitting - poor performance on training data
+
+   a. try more advanced model
+
+   b. increase model hyperparameters
+
+   c. reduce amount of features
+
+   d. train longer
+
+2. Overfitting - great performance on training data, poor performance on test data
+
+   a. collect more data
+
+   b. try a less advanced model
+
+
+
+## Experimentation
+
+What have we tried/what else can we try? May include try a new model, change desired outputs, etc. Performed iteratively as needed until an acceptable result is achieved.
 
 
 
