@@ -194,7 +194,23 @@ What have we tried/what else can we try? May include try a new model, change des
 
 ## Workbench Setup
 
-* Using Miniconda rather than Anaconda
+* Using Miniconda rather than Anaconda 
+  * Miniconda is a bare bones install with a language runtime and the ```conda``` package manager so it is essentially like a fresh ```npm``` project
+  * Anaconda installs the runtime and tons of packages by default even if you don't use them
+* Initialize project & dependencies
+  * ```conda create --prefix ./env pandas numpy matplotlib scikit-learn```
+  * dependencies are installed in the ```.env``` directory. similar to ```node_modules``` except this is considered an environment definition (the ```create``` flag) so it has a version of python installed and other concerns, as well. you can also execute a ```conda install <PACKAGE>```  to install whatever you need to add a la ```npm i```; [rtfm](https://docs.conda.io/projects/conda/en/4.6.1/user-guide/tasks/manage-environments.html)
+  * you still need to activate the environment we just created:
+    * ```conda activate <ENVNAME>```
+    * you can always turn the environment off with ```conda deactivate```
+  * launch Jupyter server with ```jupyter notebook```
+* Sharing project
+  * can either share entire directory - inefficient because of large files
+  * use a YAML file
+    * to create a YAML file for a project:
+      * ```conda env export --prefix ./env > environment.yml```
+    * to create a new environment named ```env_from_file```  from an existing YAML file named ```environnment.yml```:
+      * ```conda env create --file environment.yml --name env_from_file```
 
 
 
